@@ -129,11 +129,12 @@ app.post("/login", (req, res) => {
 //   });
 // });
 
-const port = 3001;
+// const port = 3001;
 // const port2=4000;
 // server.listen(port2, () => {
 //   console.log("chat Server is Running");
 // });
+const port = process.env.PORT || 3001; // Use the provided PORT or default to 3000
 app.listen(port, () => {
   console.log("auth Server is Running")
 })
