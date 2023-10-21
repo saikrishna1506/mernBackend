@@ -46,7 +46,7 @@ app.use(
 );
 app.use(cookieParser());
 
-mongoose.connect("mongodb://0.0.0.0:27017/employee");
+mongoose.connect("mongodb+srv://saikrishnachintha06:sai123krishna@cluster0.i1yyaz8.mongodb.net/loca?retryWrites=true&w=majority");
 console.log("mongodb connected");
 const varifyUser = (req, res, next) => {
   const token = req.cookies.token;
@@ -106,34 +106,34 @@ app.post("/login", (req, res) => {
     });
 });
 
-const server = require("http").createServer();
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-  },
-});
+// const server = require("http").createServer();
+// const io = require("socket.io")(server, {
+//   cors: {
+//     origin: "*",
+//   },
+// });
 
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
-io.on("connection", (socket) => {
-  console.log("socket id is =" + socket.id + "connected");
-  // join the socket in its own room
-  const { roomId } = socket.handshake.query;
-  socket.join(roomId);
-  // listen for messages
-  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
-  });
-  // user disconnect
-  socket.on("disconnect", () => {
-    socket.leave(roomId);
-  });
-});
+// const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+// io.on("connection", (socket) => {
+//   console.log("socket id is =" + socket.id + "connected");
+//   // join the socket in its own room
+//   const { roomId } = socket.handshake.query;
+//   socket.join(roomId);
+//   // listen for messages
+//   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+//     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+//   });
+//   // user disconnect
+//   socket.on("disconnect", () => {
+//     socket.leave(roomId);
+//   });
+// });
 
 const port = 3001;
-const port2=4000;
-server.listen(port2, () => {
-  console.log("chat Server is Running");
-});
+// const port2=4000;
+// server.listen(port2, () => {
+//   console.log("chat Server is Running");
+// });
 app.listen(port, () => {
   console.log("auth Server is Running")
 })
