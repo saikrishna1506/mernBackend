@@ -39,7 +39,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://mernfront-9iia.onrender.com"],
+    origin: ["https://mernfront-9iia.onrender.com:3000"],
     methods: ["GET", "POST"],
     credentials: true,
   })
